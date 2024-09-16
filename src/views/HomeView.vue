@@ -129,7 +129,10 @@ onMounted(() => {
 
 <template>
   <main>
-    <header>
+
+    <TheHeader></TheHeader>
+
+    <!-- <header>
       <nav class="header-navbar">
         <div class="logo"> <img src="../assets/img/image-Photoroom.png" alt=""></div>
         <ul>
@@ -160,7 +163,10 @@ onMounted(() => {
           <a class="sing-up" href="">sing up for free</a>
         </div>
       </nav>
-    </header>
+    </header> -->
+
+
+
     <section class="container-box">
       <div class="line1">
         <div class="line-text">
@@ -505,5 +511,22 @@ onMounted(() => {
     </section>
   </main>
 </template>
+
+<script>
+import TheHeader from '../components/TheHeader.vue';
+
+export default {
+  name: 'HomeView',
+  components: {
+    TheHeader
+  },
+  data(){
+    return {
+      
+    }
+  }
+}
+</script>
+
 
 <style></style>
