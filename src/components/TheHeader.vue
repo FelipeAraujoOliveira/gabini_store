@@ -34,9 +34,6 @@
 </template>
 
 <script>
-    export default { // exporta todas as propriedades deste componente
-        
-    }
 </script>
 
 
