@@ -9,12 +9,7 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView
-    },
-    {
-      path: '/teste',
-      name: 'teste',
-      component: CarouselComponent
-    },
+    }
   ]
 })
 
