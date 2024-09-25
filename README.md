@@ -29,14 +29,9 @@ O principal objetivo do Uniside é implementar um site a partir de um mockup fun
 
 ![alt text](image.png)
 
-A página inicial da **Gabini Headset Store** destaca um fone de ouvido com informações importantes:
+A página inicial da **Gabini Headset Store** 
 
-- **Navegação**: Links no topo para Home, Promoções, Categorias e Suporte.
-- **Produto em Destaque**: Fone com detalhes de **Garantia (2 anos)** e **Bateria (78 horas)**.
-- **Avaliação**: Classificação de **4.8 estrelas** com base em **2.290 avaliações** e mais de **10K unidades vendidas** no último mês.
-- **Ação**: Botão "See more details" para explorar mais informações.
 
-O design é minimalista e focado na conversão, com fácil navegação e destaque nos benefícios do produto.
 
 ## Requisitos do Sistema
 - Vue.js
