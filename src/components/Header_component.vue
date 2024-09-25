@@ -41,7 +41,7 @@
    header {
     height: 12vh;
     position: relative;
-    width: 80vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     border-bottom: 0.0052vw solid rgba(0, 0, 0, 0.105);
