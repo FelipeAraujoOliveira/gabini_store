@@ -11,7 +11,7 @@
 
 1. **Clone o repositório**:
    ```bash
-   git clone https://github.com/FelipeAraujoOliveira/Projeto_Eficaz.git
+    git clone https://github.com/FelipeAraujoOliveira/gabini_store.git
    ```
 
 2. **Instale as dependências**:
