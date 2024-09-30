@@ -1,9 +1,5 @@
 
-## Gabini Headset Store - Interface   
-
-![alt text](image.png)
-
-A página inicial da **Gabini Headset Store** 
+## Gabini Store
 
 
 
