@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import CarouselComponent from '@/components/CarouselComponent.vue'
+import CarouselComponent from '@/components/Carousel_component.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
