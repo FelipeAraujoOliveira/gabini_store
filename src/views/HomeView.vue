@@ -130,22 +130,15 @@ onMounted(() => {
 </script>
 
 <template>
-<<<<<<< Updated upstream
+
     <Header_component></Header_component>
     <Hero_component></Hero_component>
     <Card_component></Card_component>
     <Showcase_component></Showcase_component>
     <Timer_component></Timer_component>
-    <CarouselComponent/>  
-=======
-  <Header_component></Header_component>
-  <Hero_component></Hero_component>
-  <Card_component></Card_component>
-  <Showcase_component></Showcase_component>
-  <Timer_component></Timer_component>
-  <Carousel_component></Carousel_component>
+    <Carousel_component></Carousel_component>
+    <Footer_component></Footer_component>  
 
->>>>>>> Stashed changes
 </template>
 
 <script>
@@ -156,6 +149,7 @@ import Showcase_component from '@/components/Showcase_component.vue';
 import Timer_component from '@/components/Timer_component.vue';
 import Carousel_component from '@/components/Carousel_component.vue';
 import Star_component from '@/components/Star_component.vue';
+import Footer_component from '@/components/Footer_component.vue';
 
 export default {
   name: 'HomeView',
@@ -165,7 +159,8 @@ export default {
     Card_component,
     Showcase_component,
     Timer_component,
-    Carousel_component
+    Carousel_component,
+    Footer_component
   },
   data() {
     return {
