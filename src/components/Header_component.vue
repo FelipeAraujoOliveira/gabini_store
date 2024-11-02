@@ -24,16 +24,33 @@
           </li>
           <li><a href="">Support</a></li>
         </ul>
-        <div class="login-box">
-          <a href=""><b>sing in</b></a>
-          <div class="line"></div>
-          <a class="sing-up" href="">sing up for free</a>
-        </div>
+         <div class="login-box">
+    <a @click="navigateTo('/login')"><b>Sign In</b></a>
+    <div class="line"></div>
+    <a @click="navigateTo('/register')" style="color: blue;">Sign up for free</a>
+  </div>
       </nav>
     </header>
 </template>
 
 <script>
+import { useRouter } from 'vue-router';
+
+export default {
+  setup() {
+    const router = useRouter();
+
+    const navigateTo = (path) => {
+      router.push(path).then(() => {
+        window.location.reload();
+      });
+    };
+
+    return {
+      navigateTo,
+    };
+  },
+};
 </script>
 
 
