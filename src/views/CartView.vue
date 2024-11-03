@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Cart from '@/components/Cart.vue';
+import Cart from '@/components/Cart_component.vue';
 export default {
     name: 'CartView',
     components: {

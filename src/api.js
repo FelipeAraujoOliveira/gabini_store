@@ -18,6 +18,10 @@ api.interceptors.request.use(config => {
 });
 
 export const login = async (email, senha) => {
+    if (!email || !senha) {
+        throw new Error('Email and password must be provided');
+    }
+
     try {
         const response = await api.post('/Usuario', { Email: email, Senha: senha });
         return response.data;
