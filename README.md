@@ -28,3 +28,6 @@
 
 4. **Abra o projeto no navegador**:
    - Após rodar `npm run dev`, o projeto estará disponível localmente no endereço indicado no terminal.
+  
+**VIDEO**:
+   - LINK: https://youtu.be/MZm5lck_tdo
