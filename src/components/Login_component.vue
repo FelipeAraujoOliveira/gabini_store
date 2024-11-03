@@ -1,53 +1,75 @@
 <template>
-    <div class="login">
+   <div class="login">
         <div class="text-box">
-            <img src="https://i.ibb.co/CJyvtyM/image-Photoroom.png" alt="logo" class="logo" />
+            <img src="https://i.ibb.co/CJyvtyM/image_url-Photoroom.png" alt="logo" class="logo" />
             <h1>BEM VINDO de volta</h1>
             <p>Acesse sua conta agora mesmo</p>
         </div>
         <div class="form">
-            <form @submit.prevent="login">
+            <form @submit.prevent="submitLogin">
                 <input type="email" class="form-control" v-model="email" placeholder="Email" required />
-                <input type="password" class="form-control" v-model="senha" placeholder="Senha" required />
+                <input type="password" class="form-control" v-model="password" placeholder="Senha" required />
                 <a href="#" class="forgot-password d-block mb-3">Esqueci minha senha</a>
                 <button type="submit" class="btn">Entrar</button>
                 <div>
-                    Não tem uma conta? <a href="/register" class="text-primary font-weight-bold">Cadastre-se</a>
+                    NÃ£o tem uma conta? <a href="/register" class="text-primary font-weight-bold">Cadastre-se</a>
                 </div>
             </form>
         </div>
     </div>
-</template>
+  </template>
+  
+  <script>
+  import { RouterLink } from 'vue-router';
+  import axios from 'axios';
 
-<script>
-import { login } from '@/api.js';
-
-export default {
+  
+  export default {
     data() {
-        return {
-            email: '',
-            senha: '',
-            errorMessage: ''
-        };
+      return {
+        email: '',
+        password: '', // Corrigido de 'senha' para 'password'
+        showLogo: true
+      };
     },
     methods: {
-        async login() {
-            try {
-                const response = await login(this.email, this.senha);
-                console.log('Login bem-sucedido:', response);
-                localStorage.setItem('authToken', response.token);
-                // Redirecionar ou mostrar mensagens de sucesso
-            } catch (error) {
-                this.errorMessage = 'Erro ao fazer login: ' + (error.response ? error.response.data.title : error.message);
-                console.error('Erro ao fazer login:', error.response ? error.response.data : error.message);
-            }
+      async submitLogin() {
+        try {
+          const response = await axios.post('https://localhost:7119/api/Auth/signIn', {
+            email: this.email,
+            password: this.password
+          });
+  
+          console.log("Resposta completa da API de Login:", response.data);
+  
+          const token = response.data; // Supondo que a API retorne apenas o token
+  
+          if (token) {
+            localStorage.setItem('authToken', token);
+            console.log('Login realizado com sucesso!');
+            this.$router.push('/'); // Redireciona para a página principal
+          } else {
+            console.error('Token não retornado pela API de login.');
+          }
+        } catch (error) {
+          console.error('Erro no login:', error);
         }
+      }
+  
+    },
+    mounted() {
+      setTimeout(() => {
+        this.showLogo = false;
+      }, 100);
+    },
+    components: {
+      RouterLink
     }
-};
-</script>
-
-<style scoped>
-h1 {
+  };
+  </script>
+  
+  <style scoped>
+  h1 {
     font-size: 30px;
     font-weight: 900;
     text-transform: uppercase;
@@ -128,4 +150,5 @@ input {
         flex-direction: column;
     }
 }
-</style>
+  </style>
+  
