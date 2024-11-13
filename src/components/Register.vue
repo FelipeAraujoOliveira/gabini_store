@@ -106,7 +106,7 @@ export default {
     methods: {
         async registerUser() {
             try {
-                // Organiza os dados no formato esperado pela API
+                
                 const payload = {
                     usuario: {
                         nomeCompleto: this.formData.nomeCompleto,
@@ -129,7 +129,7 @@ export default {
 
                 console.log("Dados enviados:", JSON.stringify(payload));
 
-                // Faz a requisição com o novo payload
+               
                 const response = await axios.post('https://localhost:7119/api/Usuario', payload, {
                     headers: {
                         'Content-Type': 'application/json'

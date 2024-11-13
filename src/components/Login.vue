@@ -28,7 +28,7 @@ export default {
     data() {
         return {
             email: '',
-            password: '', // Corrigido de 'senha' para 'password'
+            password: '', 
             showLogo: true
         };
     },
@@ -42,12 +42,12 @@ export default {
 
                 console.log("Resposta completa da API de Login:", response.data);
 
-                const token = response.data; // Supondo que a API retorne apenas o token
+                const token = response.data; 
 
                 if (token) {
                     localStorage.setItem('authToken', token);
                     console.log('Login realizado com sucesso!');
-                    this.$router.push('/'); // Redireciona para a página principal
+                    this.$router.push('/'); 
                 } else {
                     console.error('Token não retornado pela API de login.');
                 }

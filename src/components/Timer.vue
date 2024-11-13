@@ -45,7 +45,7 @@ import shadowImage from '../assets/img/shadow.svg';
 export default {
   data() {
     return {
-      remainingTime: (12 * 3600) + (25 * 60) + 45, // Tempo total em segundos
+      remainingTime: (12 * 3600) + (25 * 60) + 45, 
       hoursTens: 0,
       hoursUnits: 0,
       minutesTens: 0,
@@ -72,32 +72,32 @@ export default {
       const newNumber = document.createElement("span");
       newNumber.className = "number";
       newNumber.textContent = newValue;
-      newNumber.style.opacity = "0"; // Começa invisível
-      newNumber.style.transform = "translateY(-20px)"; // Começa acima
+      newNumber.style.opacity = "0"; 
+      newNumber.style.transform = "translateY(-20px)"; 
       newNumber.style.transition = "opacity 0.8s ease, transform 0.8s ease";
 
-      const currentNumber = element.querySelector(".number"); // Pega o número atual
+      const currentNumber = element.querySelector(".number");
 
-      // Remove o número atual após a animação
+    
       currentNumber.style.transition = "opacity 0.8s ease, transform 0.4s ease";
       currentNumber.style.opacity = "0";
-      currentNumber.style.transform = "translateY(-20px)"; // Move para cima
+      currentNumber.style.transform = "translateY(-20px)"; 
 
       setTimeout(() => {
-        currentNumber.textContent = newValue; // Atualiza o número
-        currentNumber.style.opacity = "1"; // Anima o novo número para a posição correta
+        currentNumber.textContent = newValue; 
+        currentNumber.style.opacity = "1"; 
         currentNumber.style.transform = "translateY(0)";
-      }, 400); // Aguarda o fim da animação do número atual
+      }, 400); 
     },
     updateTimer() {
       console.log("Updating timer");
       if (this.remainingTime < 0) {
         console.log("Timer finished");
-        clearInterval(this.timer); // Para o temporizador quando o tempo acabar
+        clearInterval(this.timer); 
         return;
       }
 
-      // Calcula horas, minutos e segundos restantes
+ 
       const hours = Math.floor(this.remainingTime / 3600);
       const minutes = Math.floor((this.remainingTime % 3600) / 60);
       const seconds = this.remainingTime % 60;
@@ -111,7 +111,7 @@ export default {
 
       console.log(`Time: ${hours}:${minutes}:${seconds}`);
 
-      // Anima cada unidade de tempo se houver uma mudança
+      
       if (hoursTens !== this.hoursTens) {
         this.animateNumberChange(this.$refs.hoursTens, hoursTens);
         this.hoursTens = hoursTens;
@@ -137,7 +137,7 @@ export default {
         this.secondsUnits = secondsUnits;
       }
 
-      // Decrementa o tempo restante
+     
       this.remainingTime--;
     },
   },
