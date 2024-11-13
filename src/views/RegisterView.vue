@@ -1,14 +1,13 @@
 <template>
-    <Register_component></Register_component>
+    <Register></Register>
 </template>
 
 <script>
-import Register_component from '@/components/Register_component.vue';
+import Register from '../components/Register.vue';
 export default {
     name: 'RegisterView',
     components: {
-        Register_component
+        Register
     },
 };
 </script>
-
