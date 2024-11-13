@@ -1,5 +1,5 @@
 <template>
-   <div class="login">
+    <div class="login">
         <div class="text-box">
             <img src="https://i.ibb.co/CJyvtyM/image_url-Photoroom.png" alt="logo" class="logo" />
             <h1>BEM VINDO de volta</h1>
@@ -17,59 +17,59 @@
             </form>
         </div>
     </div>
-  </template>
-  
-  <script>
-  import { RouterLink } from 'vue-router';
-  import axios from 'axios';
+</template>
 
-  
-  export default {
+<script>
+import { RouterLink } from 'vue-router';
+import axios from 'axios';
+
+
+export default {
     data() {
-      return {
-        email: '',
-        password: '', // Corrigido de 'senha' para 'password'
-        showLogo: true
-      };
+        return {
+            email: '',
+            password: '', // Corrigido de 'senha' para 'password'
+            showLogo: true
+        };
     },
     methods: {
-      async submitLogin() {
-        try {
-          const response = await axios.post('https://localhost:7119/api/Auth/signIn', {
-            email: this.email,
-            password: this.password
-          });
-  
-          console.log("Resposta completa da API de Login:", response.data);
-  
-          const token = response.data; // Supondo que a API retorne apenas o token
-  
-          if (token) {
-            localStorage.setItem('authToken', token);
-            console.log('Login realizado com sucesso!');
-            this.$router.push('/'); // Redireciona para a página principal
-          } else {
-            console.error('Token não retornado pela API de login.');
-          }
-        } catch (error) {
-          console.error('Erro no login:', error);
+        async submitLogin() {
+            try {
+                const response = await axios.post('https://localhost:7119/api/Auth/signIn', {
+                    email: this.email,
+                    password: this.password
+                });
+
+                console.log("Resposta completa da API de Login:", response.data);
+
+                const token = response.data; // Supondo que a API retorne apenas o token
+
+                if (token) {
+                    localStorage.setItem('authToken', token);
+                    console.log('Login realizado com sucesso!');
+                    this.$router.push('/'); // Redireciona para a página principal
+                } else {
+                    console.error('Token não retornado pela API de login.');
+                }
+            } catch (error) {
+                console.error('Erro no login:', error);
+            }
         }
-      }
-  
+
     },
     mounted() {
-      setTimeout(() => {
-        this.showLogo = false;
-      }, 100);
+        setTimeout(() => {
+            this.showLogo = false;
+        }, 100);
     },
     components: {
-      RouterLink
+        RouterLink
     }
-  };
-  </script>
-  
-  <style scoped>
-  h1 {
+};
+</script>
+
+<style scoped>
+h1 {
     font-size: 30px;
     font-weight: 900;
     text-transform: uppercase;
@@ -150,5 +150,4 @@ input {
         flex-direction: column;
     }
 }
-  </style>
-  
+</style>
