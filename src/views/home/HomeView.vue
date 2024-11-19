@@ -15,14 +15,14 @@
 </template>
 
 <script>
-import ProductCard from '../components/ProductCard.vue';
-import TestimonialCard from '../components/TestimonialCard.vue';
-import Timer from '../components/Timer.vue';
-import Header from '../components/Header.vue';
-import Hero from '../components/Hero.vue';
-import Footer from '../components/Footer.vue';
-import ProductCarroussel from '../components/ProductCarroussel.vue';
-import Products from '../components/Products.vue';
+import ProductCard from '@components/products/ProductCard.vue';
+import TestimonialCard from '@components/shared/TestimonialCard.vue';
+import Timer from '@components/shared/Timer.vue';
+import Header from '@components/layout/Header.vue';
+import Hero from '@components/home/Hero.vue';
+import Footer from '@components/layout/Footer.vue';
+import ProductCarroussel from '@components/products/ProductCarroussel.vue';
+import Products from '@components/home/Products.vue';
 
 
 export default {
