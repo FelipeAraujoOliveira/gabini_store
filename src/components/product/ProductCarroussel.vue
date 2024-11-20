@@ -29,12 +29,12 @@
 </template>
 
 <script>
-import product01 from '../assets/img/product01.svg';
-import product02 from '../assets/img/product02.svg';
-import frame18 from '../assets/img/Frame 18.svg';
-import frame21 from '../assets/img/Frame 21.svg';
-import verifyIcon from '../assets/img/verify.svg';
-import seta from '../assets/img/seta.svg';
+import product01 from '@/assets/img/product01.svg';
+import product02 from '@/assets/img/product02.svg';
+import frame18 from '@/assets/img/Frame 18.svg';
+import frame21 from '@/assets/img/Frame 21.svg';
+import verifyIcon from '@/assets/img/verify.svg';
+import seta from '@/assets/img/seta.svg';
 
 export default {
     data() {

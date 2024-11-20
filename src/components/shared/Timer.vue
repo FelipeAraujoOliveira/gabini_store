@@ -38,9 +38,9 @@
 </template>
 
 <script>
-import seta from '../assets/img/seta.svg';
-import timerImage from '../assets/img/h-timer.svg';
-import shadowImage from '../assets/img/shadow.svg';
+import seta from '@/assets/img/seta.svg';
+import timerImage from '@/assets/img/h-timer.svg';
+import shadowImage from '@/assets/img/shadow.svg';
 
 export default {
   data() {
