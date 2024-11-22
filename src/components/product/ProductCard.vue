@@ -7,8 +7,9 @@
       </div>
       <div class="p-card-box">
         <div v-for="product in products" :key="product.id" class="p-card">
-          <img class="h-1" :src="product.image1" alt="">
-          <img class="h-2" :src="product.image2" alt="">
+
+          <img class="h-1" :src="getImageUrl(product.image_url)" alt="">
+          <img class="h-2" :src="getImageUrl(product.image_url)" alt="">
           <p>{{ product.description }}</p>
           <div class="price">
             <span class="s">$</span><h1>{{ product.price }}</h1><span class="red">${{ product.originalPrice }}</span>
@@ -26,7 +27,9 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      products: []
+      products: [],
+     
+      imageBaseUrl: 'https://localhost:7119/' 
     };
   },
   mounted() {
@@ -35,11 +38,15 @@ export default {
   methods: {
     async fetchProducts() {
       try {
-        const response = await axios.get('https://sua-api-url/api/products');
+        const response = await axios.get('https://localhost:7119/api/Produto');
         this.products = response.data;
       } catch (error) {
         console.error('Error fetching products:', error);
       }
+    },
+    // Função que retorna a URL completa para a imagem
+    getImageUrl(imagePath) {
+      return `${this.imageBaseUrl}${imagePath}`;
     }
   }
 };
