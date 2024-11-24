@@ -7,12 +7,12 @@
         </div>
         <div class="form">
             <form @submit.prevent="submitLogin">
-                <input type="email" class="form-control" v-model="email" placeholder="Email" required />
-                <input type="password" class="form-control" v-model="password" placeholder="Senha" required />
+                <input type="email" name="email" class="form-control" v-model="email" placeholder="Email" required />
+                <input type="password" name="password" class="form-control" v-model="password" placeholder="Senha" required />
                 <a href="#" class="forgot-password d-block mb-3">Esqueci minha senha</a>
-                <button type="submit" class="btn">Entrar</button>
+                <button type="submit" id="entrar" class="btn">Entrar</button>
                 <div>
-                    NÃ£o tem uma conta? <a href="/register" class="text-primary font-weight-bold">Cadastre-se</a>
+                    NÃo tem uma conta? <a href="/register" class="text-primary font-weight-bold">Cadastre-se</a>
                 </div>
             </form>
         </div>

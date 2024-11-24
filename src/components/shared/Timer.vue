@@ -68,7 +68,7 @@ export default {
   },
   methods: {
     animateNumberChange(element, newValue) {
-      console.log(`Animating number change: ${element} to ${newValue}`);
+      
       const newNumber = document.createElement("span");
       newNumber.className = "number";
       newNumber.textContent = newValue;
@@ -90,9 +90,7 @@ export default {
       }, 400); 
     },
     updateTimer() {
-      console.log("Updating timer");
       if (this.remainingTime < 0) {
-        console.log("Timer finished");
         clearInterval(this.timer); 
         return;
       }
@@ -107,11 +105,7 @@ export default {
       const minutesTens = Math.floor(minutes / 10);
       const minutesUnits = minutes % 10;
       const secondsTens = Math.floor(seconds / 10);
-      const secondsUnits = seconds % 10;
-
-      console.log(`Time: ${hours}:${minutes}:${seconds}`);
-
-      
+      const secondsUnits = seconds % 10;   
       if (hoursTens !== this.hoursTens) {
         this.animateNumberChange(this.$refs.hoursTens, hoursTens);
         this.hoursTens = hoursTens;

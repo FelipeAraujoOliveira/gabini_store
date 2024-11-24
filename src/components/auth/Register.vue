@@ -9,40 +9,40 @@
             <form>
                 <!-- Passo 1 -->
                 <div class="form-step" v-show="currentStep === 0">
-                    <input type="text" class="form-control" v-model="formData.nomeCompleto" placeholder="Nome completo"
+                    <input name="nomeCompleto" type="text" class="form-control" v-model="formData.nomeCompleto" placeholder="Nome completo"
                         required />
-                    <input type="email" class="form-control" v-model="formData.email" placeholder="Email" required />
-                    <input type="text" class="form-control" v-model="formData.telefone" placeholder="Telefone"
+                    <input name="email" type="email" class="form-control" v-model="formData.email" placeholder="Email" required />
+                    <input name="cel" type="text" class="form-control" v-model="formData.telefone" placeholder="Telefone"
                         required />
-                    <input type="text" class="form-control" v-model="formData.nomeDeUsuario"
+                    <input name="userName" type="text" class="form-control" v-model="formData.nomeDeUsuario"
                         placeholder="Nome de usuário" required />
                 </div>
 
                 <!-- Passo 2 -->
                 <div class="form-step" v-show="currentStep === 1">
-                    <input type="text" class="form-control" v-model="formData.enderecos[0].rua" placeholder="Rua"
+                    <input type="text" name="rua" class="form-control" v-model="formData.enderecos[0].rua" placeholder="Rua"
                         required />
-                    <input type="text" class="form-control" v-model="formData.enderecos[0].numero" placeholder="Número"
+                    <input type="text" name="numero"class="form-control" v-model="formData.enderecos[0].numero" placeholder="Número"
                         required />
-                    <input type="text" class="form-control" v-model="formData.enderecos[0].complemento"
+                    <input type="text" name="comp" class="form-control" v-model="formData.enderecos[0].complemento"
                         placeholder="Complemento" />
-                    <input type="text" class="form-control" v-model="formData.enderecos[0].cidade" placeholder="Cidade"
+                    <input type="text" name="cidade" class="form-control" v-model="formData.enderecos[0].cidade" placeholder="Cidade"
                         required />
-                    <input type="text" class="form-control" v-model="formData.enderecos[0].estado" placeholder="Estado"
+                    <input type="text" name="estado" class="form-control" v-model="formData.enderecos[0].estado" placeholder="Estado"
                         required />
-                    <input type="text" class="form-control" v-model="formData.enderecos[0].cep" placeholder="CEP"
+                    <input type="text" name="cep" class="form-control" v-model="formData.enderecos[0].cep" placeholder="CEP"
                         required />
                 </div>
 
                 <!-- Passo 3 -->
                 <div class="form-step" v-show="currentStep === 2">
-                    <input type="password" class="form-control" v-model="formData.senha" placeholder="Senha" required />
-                    <input type="password" class="form-control" v-model="confirmPassword"
+                    <input type="password" name="password" class="form-control" v-model="formData.senha" placeholder="Senha" required />
+                    <input type="password" name="confirmPassword" class="form-control" v-model="confirmPassword"
                         placeholder="Confirme sua senha" required />
-                    <input type="date" class="form-control" v-model="formData.dataNascimento"
+                    <input type="date" name="date" class="form-control" v-model="formData.dataNascimento"
                         placeholder="Data de nascimento" required />
-                    <input type="text" class="form-control" v-model="formData.cpf" placeholder="CPF" required />
-                    <input type="text" class="form-control" v-model="formData.url_foto_perfil"
+                    <input type="text" name="cpf" class="form-control" v-model="formData.cpf" placeholder="CPF" required />
+                    <input type="text" name="url" class="form-control" v-model="formData.url_foto_perfil"
                         placeholder="url_foto_perfil" required />
                 </div>
 
@@ -59,7 +59,7 @@
                 <!-- Botões de navegação -->
                 <div class="navigation">
                     <button type="button" @click="prevStep" class="btn" v-if="currentStep > 0">Anterior</button>
-                    <button type="button" @click="nextStep" class="btn">
+                    <button id="proximo" type="button" @click="nextStep" class="btn">
                         {{ currentStep === 3 ? 'Cadastrar' : 'Próximo' }}
                     </button>
                 </div>
@@ -136,7 +136,7 @@ export default {
                     }
                 });
 
-                alert("Cadastrado com sucesso!");
+                this.$router.push({ name: 'login' });
                 console.log("Resposta do backend:", response.data);
             } catch (error) {
                 console.error("Erro ao cadastrar usuário:", error);
