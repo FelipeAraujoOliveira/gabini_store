@@ -9,50 +9,38 @@
             <form>
                 <!-- Passo 1 -->
                 <div class="form-step" v-show="currentStep === 0">
-                    <input name="nomeCompleto" type="text" class="form-control" v-model="formData.nomeCompleto" placeholder="Nome completo"
-                        required />
+                    <input name="nomeCompleto" type="text" class="form-control" v-model="formData.nomeCompleto" placeholder="Nome completo" required />
                     <input name="email" type="email" class="form-control" v-model="formData.email" placeholder="Email" required />
-                    <input name="cel" type="text" class="form-control" v-model="formData.telefone" placeholder="Telefone"
-                        required />
-                    <input name="userName" type="text" class="form-control" v-model="formData.nomeDeUsuario"
-                        placeholder="Nome de usuário" required />
+                    <input name="cel" type="text" class="form-control" v-model="formData.telefone" placeholder="Telefone" required />
+                    <input name="userName" type="text" class="form-control" v-model="formData.nomeDeUsuario" placeholder="Nome de usuário" required />
                 </div>
 
                 <!-- Passo 2 -->
                 <div class="form-step" v-show="currentStep === 1">
-                    <input type="text" name="rua" class="form-control" v-model="formData.enderecos[0].rua" placeholder="Rua"
-                        required />
-                    <input type="text" name="numero"class="form-control" v-model="formData.enderecos[0].numero" placeholder="Número"
-                        required />
-                    <input type="text" name="comp" class="form-control" v-model="formData.enderecos[0].complemento"
-                        placeholder="Complemento" />
-                    <input type="text" name="cidade" class="form-control" v-model="formData.enderecos[0].cidade" placeholder="Cidade"
-                        required />
-                    <input type="text" name="estado" class="form-control" v-model="formData.enderecos[0].estado" placeholder="Estado"
-                        required />
-                    <input type="text" name="cep" class="form-control" v-model="formData.enderecos[0].cep" placeholder="CEP"
-                        required />
+                    <input type="text" name="cep" class="form-control" v-model="formData.enderecos[0].cep" placeholder="CEP" required />
+                    <input type="text" name="rua" class="form-control" v-model="formData.enderecos[0].rua" placeholder="Rua" required />
+                    <input type="text" name="numero" class="form-control" v-model="formData.enderecos[0].numero" placeholder="Número" required />
+                    <input type="text" name="comp" class="form-control" v-model="formData.enderecos[0].complemento" placeholder="Complemento" />
+                    <input type="text" name="cidade" class="form-control" v-model="formData.enderecos[0].cidade" placeholder="Cidade" required />
+                    <input type="text" name="estado" class="form-control" v-model="formData.enderecos[0].estado" placeholder="Estado" required />
                 </div>
 
                 <!-- Passo 3 -->
                 <div class="form-step" v-show="currentStep === 2">
                     <input type="password" name="password" class="form-control" v-model="formData.senha" placeholder="Senha" required />
-                    <input type="password" name="confirmPassword" class="form-control" v-model="confirmPassword"
-                        placeholder="Confirme sua senha" required />
-                    <input type="date" name="date" class="form-control" v-model="formData.dataNascimento"
-                        placeholder="Data de nascimento" required />
+                    <input type="password" name="confirmPassword" class="form-control" v-model="confirmPassword" placeholder="Confirme sua senha" required />
+                    <input type="date" name="date" class="form-control" v-model="formData.dataNascimento" placeholder="Data de nascimento" required />
                     <input type="text" name="cpf" class="form-control" v-model="formData.cpf" placeholder="CPF" required />
-                    <input type="text" name="url" class="form-control" v-model="formData.url_foto_perfil"
-                        placeholder="url_foto_perfil" required />
+                    <input type="text" name="url" class="form-control" v-model="formData.url_foto_perfil" placeholder="URL foto de perfil" required />
                 </div>
 
                 <!-- Passo 4 -->
                 <div class="form-step" v-show="currentStep === 3">
                     <p>Revise suas informações antes de finalizar o cadastro.</p>
                     <br />
-                    <div v-for="(value, key) in formData" :key="key" class="review-item">
-                        <strong>{{ formatKey(key) }}:</strong> {{ typeof value === 'object' ? JSON.stringify(value) :
-                        value }}
+                    <div v-for="(value, key) in filteredFormData" :key="key" class="review-item">
+                        <strong>{{ formatKey(key) }}:</strong> 
+                        {{ value }}
                     </div>
                 </div>
 
@@ -103,10 +91,24 @@ export default {
             }
         };
     },
+    computed: {
+      
+        filteredFormData() {
+            const { senha, ativo, url_foto_perfil, enderecos, ...filtered } = this.formData;
+
+        
+            if (enderecos && enderecos.length > 0) {
+                filtered.enderecos = `${enderecos[0].rua}, ${enderecos[0].numero}, ${enderecos[0].complemento ? enderecos[0].complemento + ', ' : ''}${enderecos[0].cidade} - ${enderecos[0].estado}, CEP: ${enderecos[0].cep}`;
+            } else {
+                filtered.enderecos = 'Endereço não informado';
+            }
+
+            return filtered;
+        }
+    },
     methods: {
         async registerUser() {
             try {
-                
                 const payload = {
                     usuario: {
                         nomeCompleto: this.formData.nomeCompleto,
@@ -129,7 +131,6 @@ export default {
 
                 console.log("Dados enviados:", JSON.stringify(payload));
 
-               
                 const response = await axios.post('https://localhost:7119/api/Usuario', payload, {
                     headers: {
                         'Content-Type': 'application/json'
@@ -179,9 +180,10 @@ export default {
 };
 </script>
 
+
 <style scoped>
 h1 {
-    font-size: 30px;
+    font-size: 60px !important;
     font-weight: 900;
     text-transform: uppercase;
 }
