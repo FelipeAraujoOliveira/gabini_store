@@ -1,14 +1,9 @@
 <template>
     <div class="edit-profile-page">
-        <header class="header">
-            <div class="container">
-                <h1>Editar Perfil</h1>
-            </div>
-        </header>
         <main class="edit-profile-container">
             <EditProfileForm @success="showSuccessMessage" />
             <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
-            <button @click="goBack" class="btn secondary-btn">Voltar</button>
+            <button @click="goBack" class="btn">Voltar</button>
         </main>
     </div>
 </template>
@@ -47,7 +42,7 @@ export default {
 }
 
 .header h1 {
-    font-size: 2rem;
+    font-size: 1rem !important;
     font-weight: bold;
     margin-bottom: 20px;
 }

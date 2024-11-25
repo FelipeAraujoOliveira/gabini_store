@@ -70,7 +70,7 @@ export default {
 
 <style scoped>
 h1 {
-    font-size: 30px;
+    font-size: 70px !important;
     font-weight: 900;
     text-transform: uppercase;
 }
