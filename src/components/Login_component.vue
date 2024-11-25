@@ -7,12 +7,22 @@
         </div>
         <div class="form">
             <form @submit.prevent="submitLogin">
+<<<<<<< Updated upstream:src/components/Login_component.vue
                 <input type="email" class="form-control" v-model="email" placeholder="Email" required />
                 <input type="password" class="form-control" v-model="password" placeholder="Senha" required />
+=======
+                <input type="email" name="email" class="form-control" v-model="email" placeholder="Email" required />
+                <input type="password" name="password" class="form-control" v-model="password" placeholder="Senha"
+                    required />
+>>>>>>> Stashed changes:src/components/auth/Login.vue
                 <a href="#" class="forgot-password d-block mb-3">Esqueci minha senha</a>
                 <button type="submit" class="btn">Entrar</button>
                 <div>
+<<<<<<< Updated upstream:src/components/Login_component.vue
                     NÃ£o tem uma conta? <a href="/register" class="text-primary font-weight-bold">Cadastre-se</a>
+=======
+                    Não tem uma conta? <a href="/register" class="text-primary font-weight-bold">Cadastre-se</a>
+>>>>>>> Stashed changes:src/components/auth/Login.vue
                 </div>
             </form>
         </div>
@@ -23,6 +33,7 @@
   import { RouterLink } from 'vue-router';
   import axios from 'axios';
 
+<<<<<<< Updated upstream:src/components/Login_component.vue
   
   export default {
     data() {
@@ -56,6 +67,43 @@
         }
       }
   
+=======
+<script>
+import { RouterLink } from 'vue-router';
+import axios from 'axios';
+
+export default {
+    data() {
+        return {
+            email: '',
+            password: '',
+            showLogo: true
+        };
+    },
+    methods: {
+        async submitLogin() {
+            try {
+                const response = await axios.post('https://localhost:7119/api/Auth/signIn', {
+                    email: this.email,
+                    password: this.password
+                });
+
+                console.log("Resposta completa da API de Login:", response.data);
+
+                const token = response.data;
+
+                if (token) {
+                    localStorage.setItem('authToken', token);
+                    console.log('Login realizado com sucesso!');
+                    this.$router.push('/profile');
+                } else {
+                    console.error('Token não retornado pela API de login.');
+                }
+            } catch (error) {
+                console.error('Erro no login:', error);
+            }
+        }
+>>>>>>> Stashed changes:src/components/auth/Login.vue
     },
     mounted() {
       setTimeout(() => {
@@ -133,12 +181,6 @@ input {
     font-weight: bold;
     border: 1px solid black;
     cursor: pointer;
-}
-
-.form-step {
-    & input {
-        margin-bottom: 20px;
-    }
 }
 
 .btn:hover {
