@@ -7,6 +7,11 @@
         </div>
         <div class="form">
             <form @submit.prevent="submitLogin">
+                <!-- Mensagem de erro -->
+                <div v-if="errorMessage" class="error-message">
+                    {{ errorMessage }}
+                </div>
+
                 <input type="email" name="email" class="form-control" v-model="email" placeholder="Email" required />
                 <input type="password" name="password" class="form-control" v-model="password" placeholder="Senha" required />
                 <a href="#" class="forgot-password d-block mb-3">Esqueci minha senha</a>
@@ -22,13 +27,15 @@
 <script>
 import { RouterLink } from 'vue-router';
 import axios from 'axios';
+// import { errorMessages } from 'vue/compiler-sfc';
 
 
 export default {
     data() {
         return {
             email: '',
-            password: '', 
+            password: '',
+            errorMessage: '',
             showLogo: true
         };
     },
@@ -42,17 +49,20 @@ export default {
 
                 console.log("Resposta completa da API de Login:", response.data);
 
-                const token = response.data; 
-
+                const token = response.data;      
+                
                 if (token) {
-                    localStorage.setItem('authToken', token);
+                    localStorage.setItem('authToken', token.token);
                     console.log('Login realizado com sucesso!');
                     this.$router.push('/'); 
                 } else {
                     console.error('Token não retornado pela API de login.');
                 }
             } catch (error) {
-                console.error('Erro no login:', error);
+                // console.error('Erro no login:', error);
+                console.log(error.response.data);
+                // Define a mensagem de erro com base na resposta da API ou no erro local
+                this.errorMessage = error.response?.data?.message || 'Ocorreu um erro ao realizar login. Tente novamente.';
             }
         }
 
@@ -134,6 +144,17 @@ input {
     border: 1px solid black;
     cursor: pointer;
 }
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    background-color: rgba(255, 0, 0, .3);
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
 
 .form-step {
     & input {
