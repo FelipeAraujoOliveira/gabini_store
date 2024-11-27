@@ -8,8 +8,7 @@
       <div class="p-card-box">
         <div v-for="product in products" :key="product.id" class="p-card">
 
-          <img class="h-1" :src="getImageUrl(product.image_url)" alt="">
-          <img class="h-2" :src="getImageUrl(product.image_url)" alt="">
+          <img class="" :src="getImageUrl(product.image_url)" alt="">
           <p>{{ product.description }}</p>
           <div class="price">
             <span class="s">$</span><h1>{{ product.price }}</h1><span class="red">${{ product.originalPrice }}</span>
@@ -51,3 +50,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  *  img {
+    width: 400px;
+  }
+</style>

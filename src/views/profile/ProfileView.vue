@@ -40,7 +40,7 @@ export default {
                 const userData = response.data;
                 this.userName = userData.nomeDeUsuario;
                 this.userEmail = userData.email;
-                this.userProfilePic = userData.url_foto_perfil || 'https://via.placeholder.com/150';
+                this.userProfilePic = response.data.url_foto_perfil;
             } catch (error) {
                 console.error('Erro ao buscar dados do usuário:', error);
                 if (error.response && error.response.status === 401) {
@@ -82,7 +82,7 @@ export default {
 }
 
 .header h1 {
-    font-size: 2rem;
+    font-size: 4rem !important;
     font-weight: bold;
     margin-bottom: 20px;
 }
@@ -125,11 +125,15 @@ p {
 
 .btn {
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 30px;
     font-size: 1rem;
     cursor: pointer;
     text-transform: uppercase;
-    transition: background-color 0.3s ease;
+    transition: 400ms;
+}
+
+.btn:hover {
+    filter: invert(1);
 }
 
 .primary-btn {
